@@ -2,3 +2,6 @@
 # OAuth token for it. `pnpm run google-token` fills in the token. It lasts about an hour.
 GOOGLE_CLOUD_PROJECT=patcon-local-cli
 GOOGLE_ACCESS_TOKEN=
+# The deployed Worker uses a service account's JSON key instead, which doesn't
+# expire (see "Deploy it" in the README). Leave it empty here to use the token.
+GOOGLE_SERVICE_ACCOUNT_KEY=

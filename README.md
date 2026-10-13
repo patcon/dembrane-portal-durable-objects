@@ -99,6 +99,37 @@ Everything runs on Gemini on Vertex AI, so you need a Google Cloud project with 
 | `pnpm run test` | Every pure function, from the tests beside each file, then the Gemini provider's tests |
 | `pnpm run typecheck` | The Worker (`tsconfig.json`) and the page (`tsconfig.client.json`) |
 | `pnpm run lint`, `pnpm run format` | Biome |
+| `pnpm run deploy` | Builds, then `wrangler deploy`. Keep the `run`: a bare `pnpm deploy` is a pnpm command of its own |
+
+## Deploy it
+
+The deployed Worker can't run `gcloud`, so it gets its tokens from a service account's key instead: it signs a JWT with the key, trades it with Google for an access token, and gets a new one shortly before each expires ([`src/server/lib/google-auth.ts`](src/server/lib/google-auth.ts)). When `GOOGLE_SERVICE_ACCOUNT_KEY` is set it's used; otherwise `GOOGLE_ACCESS_TOKEN` is, as in `pnpm run dev`.
+
+Once, make the service account and give the Worker its secrets:
+
+```bash
+PROJECT=patcon-local-cli
+gcloud iam service-accounts create dembrane-worker --project "$PROJECT"
+gcloud projects add-iam-policy-binding "$PROJECT" \
+  --member "serviceAccount:dembrane-worker@$PROJECT.iam.gserviceaccount.com" \
+  --role roles/aiplatform.user
+gcloud iam service-accounts keys create /tmp/key.json \
+  --iam-account "dembrane-worker@$PROJECT.iam.gserviceaccount.com"
+
+pnpm wrangler login
+pnpm run deploy                                      # makes the Worker, so it can hold secrets
+pnpm wrangler secret put GOOGLE_SERVICE_ACCOUNT_KEY < /tmp/key.json
+echo "$PROJECT" | pnpm wrangler secret put GOOGLE_CLOUD_PROJECT
+rm /tmp/key.json
+```
+
+If an organization policy forbids service account keys (`iam.disableServiceAccountKeyCreation`), make the account in a project outside that organization, or have the policy lifted for this one.
+
+After that, `pnpm run deploy` deploys, and a deploy keeps the secrets. The Worker is at `https://features-as-agents-merge-test-dembrane-theme.<your-subdomain>.workers.dev`.
+
+Or let GitHub deploy it: [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs the typecheck and tests, then `pnpm run deploy`, on each push to `main`. Give the repository two secrets: `CLOUDFLARE_ACCOUNT_ID`, and `CLOUDFLARE_API_TOKEN`, from the **Edit Cloudflare Workers** template on the dashboard's API Tokens page.
+
+There's no sign-in. Anyone with the link can open any project's settings and record, on your Vertex bill. To keep strangers out, put the Worker behind [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-public-app/).
 
 ## Pages
 
