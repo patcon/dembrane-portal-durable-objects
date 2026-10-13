@@ -1,12 +1,14 @@
-# Checks, then deploys the Worker on each push to main. Needs two repository
+# Checks, then deploys the Worker, when run by hand (see `on:` below). Needs two repository
 # secrets, CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID. The Google secrets
 # live on the Worker itself, set once with `wrangler secret put`, and a deploy
 # keeps them. See "Deploy it" in the README.
 name: Deploy
 
 on:
-  push:
-    branches: [main]
+  # Off for now: run it by hand from the Actions tab. To deploy on each push
+  # again, uncomment these two lines.
+  # push:
+  #   branches: [main]
   workflow_dispatch:
 
 concurrency:

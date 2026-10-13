@@ -127,7 +127,7 @@ If an organization policy forbids service account keys (`iam.disableServiceAccou
 
 After that, `pnpm run deploy` deploys, and a deploy keeps the secrets. The Worker is at `https://dembrane-portal-durable-objects.<your-subdomain>.workers.dev`.
 
-Or let GitHub deploy it: [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs the typecheck and tests, then `pnpm run deploy`, on each push to `main`. Give the repository two secrets: `CLOUDFLARE_ACCOUNT_ID`, and `CLOUDFLARE_API_TOKEN`, from the **Edit Cloudflare Workers** template on the dashboard's API Tokens page.
+Or let GitHub deploy it: [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs the typecheck and tests, then `pnpm run deploy`, when you run it from the Actions tab (deploying on each push to `main` is commented out). Give the repository two secrets: `CLOUDFLARE_ACCOUNT_ID`, and `CLOUDFLARE_API_TOKEN`, from the **Edit Cloudflare Workers** template on the dashboard's API Tokens page.
 
 There's no sign-in. Anyone with the link can open any project's settings and record, on your Vertex bill. To keep strangers out, put the Worker behind [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-public-app/).
 
