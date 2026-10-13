@@ -1,6 +1,6 @@
 # features-as-agents-merge-test-dembrane-theme: the merge test, in the dembrane portal's look
 
-A copy of [`features-as-agents-merge-test`](../features-as-agents-merge-test) whose pages are built from the dembrane portal's own theme and components: Mantine, DM Sans, and echo's participant screens, copied from [dembrane-echo](https://github.com/Dembrane/echo) rather than imitated. The agents are unchanged. The aim is to try the merge test with the portal's UX, and to keep the copies close enough to echo's that they could later be shared between echo's dashboard, its portal and these examples.
+A copy of [`features-as-agents-merge-test`](https://github.com/patcon/cloudflare-examples/tree/main/examples/features-as-agents-merge-test) whose pages are built from the dembrane portal's own theme and components: Mantine, DM Sans, and echo's participant screens, copied from [dembrane-echo](https://github.com/Dembrane/echo) rather than imitated. The agents are unchanged. The aim is to try the merge test with the portal's UX, and to keep the copies close enough to echo's that they could later be shared between echo's dashboard, its portal and these examples.
 
 ## What's from echo
 
@@ -36,9 +36,9 @@ The toolchain is echo's, so the copied CSS works as is: Mantine 7, Tailwind 3 th
 
 A group sits around one phone, which records their conversation, and Gemini transcribes it live. Three features work from that transcript:
 
-- **Explore**, from [`portal-explore`](../portal-explore): a short reply to the conversation so far, when someone asks.
-- **Verify**, from [`portal-verify`](../portal-verify): an outcome on a topic the group picks, which they revise out loud and approve.
-- **Statements**, from [`polis-statement-extraction`](../polis-statement-extraction): candidate statements for Polis, pulled from each new stretch of the transcript while it records, for the host to review.
+- **Explore**, from [`portal-explore`](https://github.com/patcon/cloudflare-examples/tree/main/examples/portal-explore): a short reply to the conversation so far, when someone asks.
+- **Verify**, from [`portal-verify`](https://github.com/patcon/cloudflare-examples/tree/main/examples/portal-verify): an outcome on a topic the group picks, which they revise out loud and approve.
+- **Statements**, from [`polis-statement-extraction`](https://github.com/patcon/cloudflare-examples/tree/main/examples/polis-statement-extraction): candidate statements for Polis, pulled from each new stretch of the transcript while it records, for the host to review.
 
 It's a test of one architecture for merging them: **the session keeps only the transcript, and each feature is its own agent**, one per session, beside it. The features don't know about each other, and the session doesn't know what they do. A project's host turns each feature on or off on the settings page.
 

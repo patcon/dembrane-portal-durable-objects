@@ -1,6 +1,6 @@
 # Plan: features as agents
 
-> The plan of [`features-as-agents-merge-test`](../features-as-agents-merge-test), which this example is a copy of. Its pages are now echo's; see the README.
+> The plan of [`features-as-agents-merge-test`](https://github.com/patcon/cloudflare-examples/tree/main/examples/features-as-agents-merge-test), which this example is a copy of. Its pages are now echo's; see the README.
 
 ## Goal
 
