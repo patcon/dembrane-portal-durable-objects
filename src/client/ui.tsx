@@ -41,7 +41,7 @@ export function InsecureNotice() {
       title="This app only works on localhost or HTTPS"
     >
       Over plain HTTP, the browser blocks the microphone and the live connection. To use it from a
-      phone, run pnpm dev:share for an HTTPS link.
+      phone, use pnpm run dev:share for an HTTPS link.
     </Alert>
   );
 }

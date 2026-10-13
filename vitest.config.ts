@@ -1,6 +1,6 @@
 import { defineConfig } from "vitest/config";
 
-// The pure functions only. The agents run in `pnpm dev`.
+// The pure functions only. The agents run in `pnpm run dev`.
 export default defineConfig({
   // Each test sits beside the file it tests.
   test: { include: ["src/**/*.test.ts"] },

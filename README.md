@@ -86,19 +86,19 @@ The session page, settings page, settings back-fill and the session's push loop 
 ```bash
 pnpm install
 cp .dev.vars.example .dev.vars   # set GOOGLE_CLOUD_PROJECT
-pnpm google-token                # puts `gcloud auth print-access-token` in .dev.vars
-pnpm dev
+pnpm run google-token            # puts `gcloud auth print-access-token` in .dev.vars
+pnpm run dev
 ```
 
-Then open <http://localhost:8798>, pick a project name such as `demo`, and start a session. To record from a phone, use `pnpm dev:share` instead: it also prints a public link.
+Then open <http://localhost:8798>, pick a project name such as `demo`, and start a session. To record from a phone, use `pnpm run dev:share` instead: it also prints a public link.
 
-Everything runs on Gemini on Vertex AI, so you need a Google Cloud project with Vertex AI enabled and `gcloud` logged in to it. The token lasts about an hour, so run `pnpm google-token` again when it expires, and restart `pnpm dev`.
+Everything runs on Gemini on Vertex AI, so you need a Google Cloud project with Vertex AI enabled and `gcloud` logged in to it. The token lasts about an hour, so run `pnpm run google-token` again when it expires, and restart `pnpm run dev`.
 
 | Command | What it does |
 |---|---|
-| `pnpm test` | Every pure function, from the tests beside each file, then the Gemini provider's tests |
-| `pnpm typecheck` | The Worker (`tsconfig.json`) and the page (`tsconfig.client.json`) |
-| `pnpm lint`, `pnpm format` | Biome |
+| `pnpm run test` | Every pure function, from the tests beside each file, then the Gemini provider's tests |
+| `pnpm run typecheck` | The Worker (`tsconfig.json`) and the page (`tsconfig.client.json`) |
+| `pnpm run lint`, `pnpm run format` | Biome |
 
 ## Pages
 

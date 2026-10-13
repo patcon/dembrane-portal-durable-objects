@@ -78,7 +78,7 @@ For `GeminiLiveSTT`:
 ## Tests
 
 ```bash
-pnpm test
+pnpm run test
 ```
 
 ## Still to do
