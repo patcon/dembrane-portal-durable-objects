@@ -33,6 +33,16 @@ export default defineConfig(({ mode }) => ({
       ),
     },
   },
+  build: {
+    rolldownOptions: {
+      onwarn(warning, warn) {
+        // mdast-util-to-hast opens each file with a stray `''` directive,
+        // which is harmless but logs a warning per file on every build.
+        if (warning.code === "MODULE_LEVEL_DIRECTIVE") return;
+        warn(warning);
+      },
+    },
+  },
   server: {
     // Each example has its own port, so they can run side by side.
     port: 8798,
