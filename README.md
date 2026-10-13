@@ -101,6 +101,7 @@ Everything runs on Gemini on Vertex AI, so you need a Google Cloud project with 
 | `pnpm run lint`, `pnpm run format` | Biome |
 | `pnpm run build` | The page into `dist/client`, and the Worker beside it. For hosts that build before they deploy |
 | `pnpm run deploy` | Builds, then `wrangler deploy`. Keep the `run`: a bare `pnpm deploy` is a pnpm command of its own |
+| `pnpm run deploy:noite` | Pushes this branch to noite's `main`, which builds and deploys it. Needs the `noite` remote: `git remote add noite https://git.35.237.237.235.sslip.io/dembrane-do` |
 
 ## Deploy it
 
