@@ -99,6 +99,7 @@ Everything runs on Gemini on Vertex AI, so you need a Google Cloud project with 
 | `pnpm run test` | Every pure function, from the tests beside each file, then the Gemini provider's tests |
 | `pnpm run typecheck` | The Worker (`tsconfig.json`) and the page (`tsconfig.client.json`) |
 | `pnpm run lint`, `pnpm run format` | Biome |
+| `pnpm run build` | The page into `dist/client`, and the Worker beside it. For hosts that build before they deploy |
 | `pnpm run deploy` | Builds, then `wrangler deploy`. Keep the `run`: a bare `pnpm deploy` is a pnpm command of its own |
 
 ## Deploy it
