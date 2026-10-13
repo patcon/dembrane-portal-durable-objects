@@ -1,3 +1,4 @@
+import "./prism-global";
 import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { IconContext } from "@phosphor-icons/react";
