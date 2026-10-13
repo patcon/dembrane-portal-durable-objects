@@ -4,6 +4,8 @@
   "compatibility_date": "2026-06-11",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
+    // The Vite plugin sets this itself, but noite reads this file directly.
+    "directory": "./dist/client",
     "not_found_handling": "single-page-application",
     "run_worker_first": ["/agents/*", "/api/*"]
   },
