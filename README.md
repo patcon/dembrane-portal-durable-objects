@@ -1,4 +1,4 @@
-# features-as-agents-merge-test-dembrane-theme: the merge test, in the dembrane portal's look
+# dembrane-portal-durable-objects: the merge test, in the dembrane portal's look
 
 A copy of [`features-as-agents-merge-test`](https://github.com/patcon/cloudflare-examples/tree/main/examples/features-as-agents-merge-test) whose pages are built from the dembrane portal's own theme and components: Mantine, DM Sans, and echo's participant screens, copied from [dembrane-echo](https://github.com/Dembrane/echo) rather than imitated. The agents are unchanged. The aim is to try the merge test with the portal's UX, and to keep the copies close enough to echo's that they could later be shared between echo's dashboard, its portal and these examples.
 
@@ -125,7 +125,7 @@ rm /tmp/key.json
 
 If an organization policy forbids service account keys (`iam.disableServiceAccountKeyCreation`), make the account in a project outside that organization, or have the policy lifted for this one.
 
-After that, `pnpm run deploy` deploys, and a deploy keeps the secrets. The Worker is at `https://features-as-agents-merge-test-dembrane-theme.<your-subdomain>.workers.dev`.
+After that, `pnpm run deploy` deploys, and a deploy keeps the secrets. The Worker is at `https://dembrane-portal-durable-objects.<your-subdomain>.workers.dev`.
 
 Or let GitHub deploy it: [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) runs the typecheck and tests, then `pnpm run deploy`, on each push to `main`. Give the repository two secrets: `CLOUDFLARE_ACCOUNT_ID`, and `CLOUDFLARE_API_TOKEN`, from the **Edit Cloudflare Workers** template on the dashboard's API Tokens page.
 
